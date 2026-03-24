@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก - ระบบค้นหาของฉัน</title>
+    
+    <!-- ส่วนนี้ใช้ตกแต่ง (CSS) -->
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .main-content {
+            margin-top: 50px;
+            width: 80%;
+            max-width: 600px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 25px; /* ทำให้ขอบมน */
+            outline: none;
+        }
+        #resultArea {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>New Products</h1>
+    </header>
+
+    <div class="main-content">
+        <!-- ช่องค้นหา -->
+        <input type="text" id="myInput" placeholder="ค้นหาข้อมูลที่นี่..." onkeyup="mySearchFunction()">
+
+        <!-- พื้นที่แสดงผลลัพธ์ -->
+        <div id="resultArea">
+            <ul id="dataList" style="list-style: none; padding: 0;">
+                <li><a href="https://www.canva.com/design/DAHE2NsN7Xs/cjgsMOkR8DpTgzECbNc-0Q/edit?ui=eyJBIjp7fX0&referrer=https%3A%2F%2Fwww.canva.com%2Fs%2Ftemplates%3Fquery%3D%25E0%25B9%2580%25E0%25B8%25A7%25E0%25B9%2587%25E0%25B8%259A">พิซซ่าไก่บาร์บีคิวซอสเทาซัน</a></li>
+                           
+            </ul>
+        </div>
+    </div>
+
+    <!-- ส่วนคำสั่งควบคุม (JavaScript) -->
+    <script>
+        function mySearchFunction() {
+            let input = document.getElementById('myInput');
+            let filter = input.value.toLowerCase();
+            let ul = document.getElementById("dataList");
+            let li = ul.getElementsByTagName('li');
+
+            for (let i = 0; i < li.length; i++) {
+                let text = li[i].textContent || li[i].innerText;
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
